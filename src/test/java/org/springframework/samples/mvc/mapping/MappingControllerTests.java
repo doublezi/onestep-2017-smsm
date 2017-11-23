@@ -16,7 +16,18 @@ import org.springframework.http.MediaType;
 import org.springframework.samples.mvc.AbstractContextControllerTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
+/**
+ * 
+ * ***************************
+ * ä½œè€…ï¼šéš”å£è€ç‹(à²¥ _ à²¥)        
+ * ***************************
+ * æ—¥æœŸï¼š2017å¹´11æœˆ23æ—¥              
+ * ***************************
+ * æ—¶é—´ï¼šä¸‹åˆ4:20:53              
+ * ***************************
+ * consumeå’Œproduceçš„åŒºåˆ«åŠä½œç”¨å‚è€ƒï¼š
+ * 1. byConsumes() å’Œ byProduces*()
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 public class MappingControllerTests extends AbstractContextControllerTests {
 
@@ -25,16 +36,16 @@ public class MappingControllerTests extends AbstractContextControllerTests {
 	@Before
 	public void setup() throws Exception {
 		
-		//¼¯³É²âÊÔ
+		//é›†æˆæµ‹è¯•
 		this.mockMvc = webAppContextSetup(this.wac).alwaysExpect(status().isOk()).build();
 	}
 
 	@Test
 	public void byPath() throws Exception {
 		/*
-		 * ¡¾ÇëÇó¡¿ GET /mapping/path
-		 * ¡¾ÏìÓ¦¡¿ Mapped by path! 
-		 * ¡¾ºËĞÄ¡¿content().string(String expectedContent)
+		 * ã€è¯·æ±‚ã€‘ GET /mapping/path
+		 * ã€å“åº”ã€‘ Mapped by path! 
+		 * ã€æ ¸å¿ƒã€‘content().string(String expectedContent)
 		 */
 		this.mockMvc.perform(get("/mapping/path")).andExpect(content().string("Mapped by path!"));
 	}
@@ -42,9 +53,9 @@ public class MappingControllerTests extends AbstractContextControllerTests {
 	@Test
 	public void byPathPattern() throws Exception {
 		/*
-		 * ¡¾ÇëÇó¡¿ GET /mapping/path/wildcard
-		 * ¡¾ÏìÓ¦¡¿ "Mapped by path pattern ('/mapping/path/wildcard')"
-		 * ¡¾ºËĞÄ¡¿ content().string(String expectedContent)
+		 * ã€è¯·æ±‚ã€‘ GET /mapping/path/wildcard
+		 * ã€å“åº”ã€‘ "Mapped by path pattern ('/mapping/path/wildcard')"
+		 * ã€æ ¸å¿ƒã€‘ content().string(String expectedContent)
 		 */
 		this.mockMvc.perform(get("/mapping/path/wildcard"))
 				.andExpect(content().string("Mapped by path pattern ('/mapping/path/wildcard')"));
@@ -53,9 +64,9 @@ public class MappingControllerTests extends AbstractContextControllerTests {
 	@Test
 	public void byMethod() throws Exception {
 		/*
-		 * ¡¾ÇëÇó¡¿ GET /mapping/method  
-		 * ¡¾ÏìÓ¦¡¿ Mapped by path+method
-		 * ¡¾ºËĞÄ¡¿content().string(String expectedContent)
+		 * ã€è¯·æ±‚ã€‘ GET /mapping/method  
+		 * ã€å“åº”ã€‘ Mapped by path+method
+		 * ã€æ ¸å¿ƒã€‘content().string(String expectedContent)
 		 */
 		this.mockMvc.perform(get("/mapping/method"))
 				.andExpect(content().string("Mapped by path + method"));
@@ -64,9 +75,9 @@ public class MappingControllerTests extends AbstractContextControllerTests {
 	@Test
 	public void byParameter() throws Exception {
 		/*
-		 * ¡¾ÇëÇó¡¿ GET /mapping/parameter?foo=bar
-		 * ¡¾ÏìÓ¦¡¿ Mapped by path + method + presence of query parameter!
-		 * ¡¾ºËĞÄ¡¿content().string(String expectedContent)
+		 * ã€è¯·æ±‚ã€‘ GET /mapping/parameter?foo=bar
+		 * ã€å“åº”ã€‘ Mapped by path + method + presence of query parameter!
+		 * ã€æ ¸å¿ƒã€‘content().string(String expectedContent)
 		 */
 		this.mockMvc.perform(get("/mapping/parameter?foo=bar"))
 				.andExpect(content().string("Mapped by path + method + presence of query parameter!"));
@@ -75,9 +86,9 @@ public class MappingControllerTests extends AbstractContextControllerTests {
 	@Test
 	public void byNotParameter() throws Exception {
 		/*
-		 * ¡¾ÇëÇó¡¿ GET /mapping/parameter
-		 * ¡¾ÏìÓ¦¡¿"Mapped by path + method + not presence of query parameter!"
-		 * ¡¾ºËĞÄ¡¿ content().string(String expectedContent)
+		 * ã€è¯·æ±‚ã€‘ GET /mapping/parameter
+		 * ã€å“åº”ã€‘"Mapped by path + method + not presence of query parameter!"
+		 * ã€æ ¸å¿ƒã€‘ content().string(String expectedContent)
 		 */
 		this.mockMvc.perform(get("/mapping/parameter"))
 				.andExpect(content().string("Mapped by path + method + not presence of query parameter!"));
@@ -86,10 +97,10 @@ public class MappingControllerTests extends AbstractContextControllerTests {
 	@Test
 	public void byHeader() throws Exception {
 		/*
-		 * ¡¾ÇëÇó¡¿ GET /mapping/header
-		 * ¡¾Í·    ¡¿  FooHeader:foo £¨ÔÚRequest HeadersÖĞ£¨°´F12½øÈëNetwork£©£©
-		 * ¡¾ÏìÓ¦¡¿ "Mapped by path + method + presence of header!"
-		 * ¡¾ºËĞÄ¡¿ header();content().string(String expectedContent)
+		 * ã€è¯·æ±‚ã€‘ GET /mapping/header
+		 * ã€å¤´    ã€‘  FooHeader:foo ï¼ˆåœ¨Request Headersä¸­ï¼ˆæŒ‰F12è¿›å…¥Networkï¼‰ï¼‰
+		 * ã€å“åº”ã€‘ "Mapped by path + method + presence of header!"
+		 * ã€æ ¸å¿ƒã€‘ header();content().string(String expectedContent)
 		 */
 		this.mockMvc.perform(get("/mapping/header").header("FooHeader", "foo"))
 				.andExpect(content().string("Mapped by path + method + presence of header!"));
@@ -98,22 +109,23 @@ public class MappingControllerTests extends AbstractContextControllerTests {
 	@Test
 	public void byHeaderNegation() throws Exception {
 		/*
-		 * ¡¾ÇëÇó¡¿ GET /mapping/header
-		 * ¡¾ÏìÓ¦¡¿ Mapped by path + method + absence of header!
-		 * ¡¾ºËĞÄ¡¿content().string(String expectedContent)
+		 * ã€è¯·æ±‚ã€‘ GET /mapping/header
+		 * ã€å“åº”ã€‘ Mapped by path + method + absence of header!
+		 * ã€æ ¸å¿ƒã€‘content().string(String expectedContent)
 		 */
 		this.mockMvc.perform(get("/mapping/header"))
  				.andExpect(content().string("Mapped by path + method + absence of header!"));
 	}
-
+	
+	// ã€â˜…ã€‘consumesä»¥Content-typeä¸ºæ ‡å‡†ç¼©å°æ˜ å°„èŒƒå›´
 	@Test
 	public void byConsumes() throws Exception {
 		/*
-		 * ¡¾ÇëÇó¡¿ POST /mapping/consumes
-		 * ¡¾ÄÚÈİÀàĞÍ¡¿ Content-Type:application/json£¨ÔÚResponse HeadersÖĞ£¨°´F12½øÈëNetwork£©£©
-		 * ¡¾ÄÚÈİ¸ñÊ½¡¿ json¸ñÊ½
-		 * ¡¾ÏìÓ¦£¨ÏìÓ¦ÄÚÈİµÄÇ°×º£©¡¿ Mapped by path + method + consumable media type (javaBean
-		 * ¡¾ºËĞÄ¡¿
+		 * ã€è¯·æ±‚ã€‘ POST /mapping/consumes
+		 * ã€å†…å®¹ç±»å‹ã€‘ã€â˜…ã€‘ Content-Type:application/jsonï¼ˆåœ¨Response Headersä¸­ï¼ˆæŒ‰F12è¿›å…¥Networkï¼‰ï¼‰
+		 * ã€å†…å®¹æ ¼å¼ã€‘ jsonæ ¼å¼
+		 * ã€å“åº”ï¼ˆå“åº”å†…å®¹çš„å‰ç¼€ï¼‰ã€‘ Mapped by path + method + consumable media type (javaBean
+		 * ã€æ ¸å¿ƒã€‘
 		 */
 		this.mockMvc.perform(
 				post("/mapping/consumes")
@@ -121,14 +133,15 @@ public class MappingControllerTests extends AbstractContextControllerTests {
 					.content("{ \"foo\": \"bar\", \"fruit\": \"apple\" }".getBytes()))
 				.andExpect(content().string(startsWith("Mapped by path + method + consumable media type (javaBean")));
 	}
-
+	
+	// ã€â˜…ã€‘produceä»¥Acceptä¸ºæ ‡å‡†ç¼©å°æ˜ å°„èŒƒå›´
 	@Test
 	public void byProducesAcceptJson() throws Exception {
 		/*
-		 * ¡¾ÇëÇó¡¿GET /mapping/produces
-		 * ¡¾½ÓÊÜ¡¿Accept:application/json£¨ÔÚRequest HeadersÖĞ£¨°´F12½øÈëNetwork£©£©
-		 * ¡¾ÏìÓ¦¡¿{"foo":"bar","fruit":"apple","love":"tall girl"}
-		 * ¡¾ºËĞÄ¡¿accept(MediaType... mediaTypes);jsonPath(String expression, Object... args).value(Object expectedValue)
+		 * ã€è¯·æ±‚ã€‘GET /mapping/produces
+		 * ã€æ¥å—ã€‘ã€â˜…ã€‘Accept:application/jsonï¼ˆåœ¨Request Headersä¸­ï¼ˆæŒ‰F12è¿›å…¥Networkï¼‰ï¼‰
+		 * ã€å“åº”ã€‘{"foo":"bar","fruit":"apple","love":"tall girl"}
+		 * ã€æ ¸å¿ƒã€‘accept(MediaType... mediaTypes);jsonPath(String expression, Object... args).value(Object expectedValue)
 		 * 
 		 */
 		this.mockMvc.perform(get("/mapping/produces").accept(MediaType.APPLICATION_JSON))
@@ -136,14 +149,15 @@ public class MappingControllerTests extends AbstractContextControllerTests {
 				.andExpect(jsonPath("$.fruit").value("apple"))
 				.andExpect(jsonPath("$.love").value("tall girl"));
 	}
-
+	
+	// ã€â˜…ã€‘produceä»¥Acceptä¸ºæ ‡å‡†ç¼©å°æ˜ å°„èŒƒå›´
 	@Test
 	public void byProducesAcceptXml() throws Exception {
 		/*
-		 * ¡¾ÇëÇó¡¿GET /mapping/produces
-		 * ¡¾½ÓÊÜ¡¿Accept:application/xml£¨ÔÚRequest HeadersÖĞ£¨°´F12½øÈëNetwork£©£©
-		 * ¡¾ÏìÓ¦¡¿<?xml version="1.0" encoding="UTF-8" standalone="yes"?><javaBean><foo>bar</foo><fruit>apple</fruit><love>tall girl</love></javaBean>
-		 * ¡¾ºËĞÄ¡¿accept(MediaType... mediaTypes);xpath(String expression, Object... args).string(String expectedValue)
+		 * ã€è¯·æ±‚ã€‘GET /mapping/produces
+		 * ã€æ¥å—ã€‘ã€â˜…ã€‘Accept:application/xmlï¼ˆåœ¨Request Headersä¸­ï¼ˆæŒ‰F12è¿›å…¥Networkï¼‰ï¼‰
+		 * ã€å“åº”ã€‘<?xml version="1.0" encoding="UTF-8" standalone="yes"?><javaBean><foo>bar</foo><fruit>apple</fruit><love>tall girl</love></javaBean>
+		 * ã€æ ¸å¿ƒã€‘accept(MediaType... mediaTypes);xpath(String expression, Object... args).string(String expectedValue)
 		 */
 		this.mockMvc.perform(get("/mapping/produces").accept(MediaType.APPLICATION_XML))
 				.andExpect(xpath("/javaBean/foo").string("bar"))
@@ -151,14 +165,15 @@ public class MappingControllerTests extends AbstractContextControllerTests {
 				.andExpect(xpath("/javaBean/love").string("tall girl"));
 		
 	}
-
+	
+	
 	@Test
 	public void byProducesJsonExtension() throws Exception {
 		/*
-		 * ¡¾ÇëÇó¡¿/mapping/produces.json
-		 * ¡¾ÏìÓ¦¡¿{"foo":"bar","fruit":"apple","love":"tall girl"}
-		 * ¡¾ºËĞÄ¡¿jsonPath(String expression, Object... args).value(Object expectedValue)
-		 * ¡¾ÕıÈ·¡¿Written [JavaBean {foo=[bar], fruit=[apple],love=[tall girl]}] as "application/json" using [MappingJackson2HttpMessageConverter@75e01201]
+		 * ã€è¯·æ±‚ã€‘/mapping/produces.json
+		 * ã€å“åº”ã€‘{"foo":"bar","fruit":"apple","love":"tall girl"}
+		 * ã€æ ¸å¿ƒã€‘jsonPath(String expression, Object... args).value(Object expectedValue)
+		 * ã€æ­£ç¡®ã€‘Written [JavaBean {foo=[bar], fruit=[apple],love=[tall girl]}] as "application/json" using [MappingJackson2HttpMessageConverter@75e01201]
 		 */
 		this.mockMvc.perform(get("/mapping/produces.json"))
 				.andExpect(jsonPath("$.foo").value("bar"))
@@ -169,10 +184,10 @@ public class MappingControllerTests extends AbstractContextControllerTests {
 	@Test
 	public void byProducesXmlExtension() throws Exception {
 		/*
-		 * ¡¾ÇëÇó¡¿/mapping/produces.xml
-		 * ¡¾ÏìÓ¦¡¿<?xml version="1.0" encoding="UTF-8" standalone="yes"?><javaBean><foo>bar</foo><fruit>apple</fruit><love>tall girl</love></javaBean>
-		 * ¡¾ºËĞÄ¡¿xpath(String expression, Object... args).string(String expectedValue)
-		 * ¡¾ÕıÈ·¡¿ Written [JavaBean {foo=[bar], fruit=[apple],love=[tall girl]}] as "application/xml" using [Jaxb2RootElementHttpMessageConverter@41925502]
+		 * ã€è¯·æ±‚ã€‘/mapping/produces.xml
+		 * ã€å“åº”ã€‘<?xml version="1.0" encoding="UTF-8" standalone="yes"?><javaBean><foo>bar</foo><fruit>apple</fruit><love>tall girl</love></javaBean>
+		 * ã€æ ¸å¿ƒã€‘xpath(String expression, Object... args).string(String expectedValue)
+		 * ã€æ­£ç¡®ã€‘ Written [JavaBean {foo=[bar], fruit=[apple],love=[tall girl]}] as "application/xml" using [Jaxb2RootElementHttpMessageConverter@41925502]
 		 */
 		this.mockMvc.perform(get("/mapping/produces.xml"))
 				.andExpect(xpath("/javaBean/foo").string("bar"))

@@ -47,12 +47,12 @@ public class MappingController {
 	public @ResponseBody String byHeaderNegation() {
 		return "Mapped by path + method + absence of header!";
 	}
-
+	
 	@RequestMapping(value="/mapping/consumes", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody String byConsumes(@RequestBody JavaBean javaBean) {
 		return "Mapped by path + method + consumable media type (javaBean '" + javaBean + "')";
 	}
-
+	
 	@RequestMapping(value="/mapping/produces", method=RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody JavaBean byProducesJson() {
 		return new JavaBean();
