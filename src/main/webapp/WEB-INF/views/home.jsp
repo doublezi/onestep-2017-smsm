@@ -100,16 +100,16 @@
 			See the <code>org.springframework.samples.mvc.data</code> package for the @Controller code
 		</p>
 		<ul>
-			<li>
-				<a id="param" class="textLink" href="<c:url value="/data/param?foo=bar" />">Query parameter</a>
+			<li>                                     <!-- 【注意】实际开发时，参数值是动态可变的，不会一成不变。 -->
+				<a id="param" class="textLink" href="<c:url value="/data/param?foo=zzn_bar" />">Query parameter</a>
 			</li>
-			<li>
-				<a id="group" class="textLink" href="<c:url value="/data/group?param1=foo&param2=bar&param3=baz" />">Group of query parameters</a>
+			<li>                                     <!-- 【注意】实际开发时，参数值是动态可变的，不会一成不变。 -->
+				<a id="group" class="textLink" href="<c:url value="/data/group?param1=zzn_foo&param2=zzn_bar&param3=zzn_baz" />">Group of query parameters</a>
 			</li>
-			<li>
-				<a id="var" class="textLink" href="<c:url value="/data/path/foo" />">Path variable</a>
-			</li>
-			<li>
+			<li>                                   <!-- 【注意】zzn_foo是一个参数值，说明他可变 -->
+				<a id="var" class="textLink" href="<c:url value="/data/path/zzn_foo" />">Path variable</a>
+			</li> 
+			<li>                                         <!-- {path},path=matrixvars;foo=bar -->
 				<a id="matrixVar" class="textLink" href="<c:url value="/data/matrixvars;foo=bar/simple" />">Matrix variable</a>
 			</li>
 			<li>
@@ -117,6 +117,9 @@
 			</li>
 			<li>
 				<a id="header" class="textLink" href="<c:url value="/data/header" />">Header</a>
+			</li>
+			<li>
+				<a id="cookie" class="textLink" href="<c:url value="/data/cookie" />">Cookie</a>
 			</li>
 			<li>
 				<form id="requestBody" class="textForm" action="<c:url value="/data/body" />" method="post">
@@ -130,7 +133,7 @@
 			</li>
 		</ul>	
 		<div id="standardArgs">
-			<h3>Standard Resolvable Web Arguments</h3>
+			<h3>Standard Resolvable Web Arguments (PAUSE By 2017.11.24)</h3>
 			<ul>
 				<li>
 					<a id="request" class="textLink" href="<c:url value="/data/standard/request" />">Request arguments</a>				
@@ -160,7 +163,7 @@
 			</ul>
 		</div>
 		<div id="customArgs">
-			<h3>Custom Resolvable Web Arguments</h3>	
+			<h3>Custom Resolvable Web Arguments (PAUSE By 2017.11.24)</h3>	
 			<ul>
 				<li>
 					<a id="customArg" class="textLink" href="<c:url value="/data/custom" />">Custom</a>			
@@ -515,7 +518,7 @@ $(document).ready(function() {
 	$("form.textForm").submit(function(event) {
 		var form = $(this);
 		var button = form.children(":first");
-		$.ajax({ type: "POST", url: form.attr("action"), data: "foo", contentType: "text/plain", dataType: "text", success: function(text) { MvcUtil.showSuccessResponse(text, button); }, error: function(xhr) { MvcUtil.showErrorResponse(xhr.responseText, button); }});
+		$.ajax({ type: "POST", url: form.attr("action"), data: "zzn_foo", contentType: "text/plain", dataType: "text", success: function(text) { MvcUtil.showSuccessResponse(text, button); }, error: function(xhr) { MvcUtil.showErrorResponse(xhr.responseText, button); }});
 		return false;
 	});
 
