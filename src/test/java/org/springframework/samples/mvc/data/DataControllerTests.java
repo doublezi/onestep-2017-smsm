@@ -23,6 +23,7 @@ public class DataControllerTests extends AbstractContextControllerTests {
 
 	@Before
 	public void setup() throws Exception {
+		//集成测试
 		this.mockMvc = webAppContextSetup(this.wac).alwaysExpect(status().isOk()).build();
 	}
 
@@ -33,26 +34,28 @@ public class DataControllerTests extends AbstractContextControllerTests {
 	}
 
 	@Test
-	public void group() throws Exception {
+	public void group() throws Exception {//利用前台参数值（前参值）封装JavaBean
 		this.mockMvc.perform(get("/data/group?param1=foo&param2=bar&param3=baz"))
-				.andExpect(content().string(startsWith(
+				.andExpect(content().string(startsWith(//startsWith
 						"Obtained parameter group org.springframework.samples.mvc.data.JavaBean@")));
 	}
 
 	@Test
 	public void pathVar() throws Exception {
-		this.mockMvc.perform(get("/data/path/foo"))
+		this.mockMvc.perform(get("/data/path/foo"))//var前参值foo后传
 				.andExpect(content().string("Obtained 'var' path variable value 'foo'"));
 	}
 
 	@Test
-	public void matrixVar() throws Exception {
+	public void matrixVar() throws Exception {//matrixvars;foo=bar[URI-Template-name;MatriName=MatriValue]
 		this.mockMvc.perform(get("/data/matrixvars;foo=bar/simple")).andDo(print())
 				.andExpect(content().string("Obtained matrix variable 'foo=bar' from path segment 'matrixvars'"));
 	}
 
 	@Test
 	public void matrixVarMultiple() throws Exception {
+		// matrixvars;foo=bar1[URI-Template-name;MatriName=MatriValue] //采纳这个格式解读： 具体值[模型架构]
+		// multiple;foo=bar2[URI-Template-name;MatriName=MatriValue] // 同上。
 		this.mockMvc.perform(get("/data/matrixvars;foo=bar1/multiple;foo=bar2"))
 				.andExpect(content().string("Obtained matrix variable foo=bar1 from path segment 'matrixvars' and variable 'foo=bar2 from path segment 'multiple'"));
 	}
@@ -60,18 +63,21 @@ public class DataControllerTests extends AbstractContextControllerTests {
 	@Test
 	public void header() throws Exception {
 		this.mockMvc.perform(get("/data/header").accept(MediaType.ALL))
-				.andExpect(content().string("Obtained 'Accept' header '*/*'"));
+				.andExpect(content().string("Obtained 'Accept' header '*/*'"));//Accept:text/plain, */*; q=0.01
 	}
 
 	@Test
 	public void requestBody() throws Exception {
 		this.mockMvc.perform(
 				post("/data/body")
-					.contentType(MediaType.TEXT_PLAIN)
+					.contentType(MediaType.TEXT_PLAIN)//内容类型： text/plain
 					.content("foo".getBytes()))
 				.andExpect(content().string("Posted request body 'foo'"));
 	}
-
+	/**
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void requestBodyAndHeaders() throws Exception {
 		this.mockMvc.perform(

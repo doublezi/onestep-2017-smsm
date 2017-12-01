@@ -15,48 +15,67 @@ import org.springframework.http.MediaType;
 import org.springframework.samples.mvc.AbstractContextControllerTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
+/**
+ * 
+ * </br>
+ * *********************
+ * </br>
+ * 作者：隔壁老王(ಥ _ ಥ) 21岁
+ * </br>          
+ * *********************
+ * </br>
+ * 日期：2017年11月28日
+ * </br>                
+ * *********************
+ * </br>
+ * 时间：下午2:14:40        
+ * </br>        
+ * *********************
+ * </br>
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 public class MessageConvertersControllerTests extends AbstractContextControllerTests {
-
+	
+	// URI Template Pattern
 	private static String URI = "/messageconverters/{action}";
-
+	
 	private MockMvc mockMvc;
 
 	@Before
 	public void setup() {
+		//集成测试
 		this.mockMvc = webAppContextSetup(this.wac).alwaysExpect(status().isOk()).build();
 	}
 
 	@Test
 	public void readString() throws Exception {
-		this.mockMvc.perform(post(URI, "string").content("foo".getBytes()))
-				.andExpect(content().string("Read string 'foo'"));
+		this.mockMvc.perform(post(URI, "string").content("foo".getBytes()))//请求:/messageconverters/string
+				.andExpect(content().string("Read string 'foo'")); //期望：返回字符串
 	}
 
 	@Test
 	public void writeString() throws Exception {
-		this.mockMvc.perform(get(URI, "string"))
-			.andExpect(content().string("Wrote a string"));
+		this.mockMvc.perform(get(URI, "string"))//请求：/messageconverters/string
+			.andExpect(content().string("Wrote a string"));//期望：返回与控制器方法等价的字符串值
 	}
 
 	@Test
 	public void readForm() throws Exception {
 		this.mockMvc.perform(
-				post(URI, "form")
-					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
-					.param("foo", "bar")
-					.param("fruit", "apple"))
-				.andExpect(content().string("Read x-www-form-urlencoded: JavaBean {foo=[bar], fruit=[apple]}"));
+				post(URI, "form")//请求：/messageconverters/form
+					.contentType(MediaType.APPLICATION_FORM_URLENCODED)// 内容类型：application/x-www-form-urlencoded
+					.param("foo", "bar") // 前参值：foo=bar
+					.param("fruit", "apple")) // 前参值：fruit=apple
+				.andExpect(content().string("Read x-www-form-urlencoded: JavaBean {foo=[bar], fruit=[apple]}"));//期望：返回与控制器方法等价的字符串值
 	}
 
 	@Test
 	public void writeForm() throws Exception {
-		this.mockMvc.perform(get(URI, "form"))
-				.andExpect(content().contentType(MediaType.APPLICATION_FORM_URLENCODED))
-				.andExpect(content().string("foo=bar&fruit=apple"));
+		this.mockMvc.perform(get(URI, "form"))//请求：/messageconverters/form
+				.andExpect(content().contentType(MediaType.APPLICATION_FORM_URLENCODED))// 内容类型：application/x-www-form-urlencoded
+				.andExpect(content().string("foo=bar&fruit=apple&xxx=ooo"));//期望：返回与控制器方法等价的字符串值
 	}
-
+	// 这种测试很操蛋...（；´д｀）ゞ （复制张贴是块宝！）
 	private static String XML =
 			"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>" +
 			"<javaBean><foo>bar</foo><fruit>apple</fruit></javaBean>";

@@ -11,6 +11,7 @@ public class JavaBean {
 	
 	private Integer primitive;
 	
+	//Declares that a field should be formatted as a date time. 
 	@DateTimeFormat(iso=ISO.DATE)
 	private Date date;
 

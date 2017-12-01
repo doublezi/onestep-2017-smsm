@@ -32,10 +32,7 @@ public class JavaBean {
 		this.param3 = param3;
 	}
 
-	@Override
-	public String toString() {
-		return "JavaBean {[param1=" + param1 + ", param2=" + param2 + ", param3=" + param3 + "]}";
-	}
+
 	
 	
 

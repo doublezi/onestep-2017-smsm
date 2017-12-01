@@ -17,4 +17,9 @@ public final class SocialSecurityNumber {
 		return new SocialSecurityNumber(value);
 	}
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return value;
+	}
 }

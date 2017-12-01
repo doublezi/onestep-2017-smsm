@@ -49,7 +49,7 @@ public class RequestDataController {
 		return "Obtained 'var' path variable value '" + var + "'";
 	}
 	/**
-	 * 标准注释：
+	 * 标准注释：</br>
 	 * {@code @PathVariable String path} 使得{@code path}成为路径变量，并能够支持URI Template </br>
 	 * {@code @MatrixVariable String foo} 使得{@code foo}成为矩阵变量，并能够支持Matrix URIs </br>
 	 * @param path 路径变量名
