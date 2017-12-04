@@ -16,8 +16,8 @@ public class JavaBean {
 	private Integer number;
 
 	@NotNull
-	@Future
-	@DateTimeFormat(iso=ISO.DATE)
+	@Future // 时间必须是面向未来的（从即刻算起）
+	@DateTimeFormat(iso=ISO.DATE) //declares that field should be fommat as a date time
 	private Date date;
 
 	public Integer getNumber() {

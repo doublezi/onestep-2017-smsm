@@ -9,7 +9,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.async.WebAsyncTask;
-
+/**
+ * 
+ * </br>
+ * *********************
+ * </br>
+ * 作者：隔壁老王(ಥ _ ಥ) 21岁
+ * </br>          
+ * *********************
+ * </br>
+ * 日期：2017年12月4日
+ * </br>                
+ * *********************
+ * </br>
+ * 时间：下午1:43:18        
+ * </br>        
+ * *********************
+ * </br>
+ * {@link Callable} 在并发编程中很常用的实用工具类。 
+ */
 @Controller
 @RequestMapping("/async/callable")
 public class CallableController {
@@ -18,7 +36,7 @@ public class CallableController {
 	@RequestMapping("/response-body")
 	public @ResponseBody Callable<String> callable() {
 
-		return new Callable<String>() {
+		return new Callable<String>() {//匿名内部类
 			@Override
 			public String call() throws Exception {
 				Thread.sleep(2000);
@@ -30,7 +48,7 @@ public class CallableController {
 	@RequestMapping("/view")
 	public Callable<String> callableWithView(final Model model) {
 
-		return new Callable<String>() {
+		return new Callable<String>() {//匿名内部类
 			@Override
 			public String call() throws Exception {
 				Thread.sleep(2000);

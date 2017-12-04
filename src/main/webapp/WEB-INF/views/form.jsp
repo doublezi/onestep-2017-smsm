@@ -19,6 +19,7 @@
 		<form:form id="form" method="post" modelAttribute="formBean" cssClass="cleanform">
 			<div class="header">
 		  		<h2>Form</h2>
+		  		<!-- message zone -->
 		  		<c:if test="${not empty message}">
 					<div id="message" class="success">${message}</div>	
 		  		</c:if>

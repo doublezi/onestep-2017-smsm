@@ -9,7 +9,25 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.test.web.servlet.MockMvc;
-
+/**
+ * 
+ * </br>
+ * *********************
+ * </br>
+ * 作者：隔壁老王(ಥ _ ಥ) 21岁
+ * </br>          
+ * *********************
+ * </br>
+ * 日期：2017年12月4日
+ * </br>                
+ * *********************
+ * </br>
+ * 时间：下午1:35:25        
+ * </br>        
+ * *********************
+ * </br>
+ * 至关重要的一点是：掌握{@code redirectedUrl()}的用法
+ */
 public class RedirectControllerTests {
 
 	private MockMvc mockMvc;

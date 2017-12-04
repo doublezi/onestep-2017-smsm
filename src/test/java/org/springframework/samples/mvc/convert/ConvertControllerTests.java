@@ -24,7 +24,8 @@ public class ConvertControllerTests {
 	public void setup() throws Exception {
 		FormattingConversionService cs = new DefaultFormattingConversionService();
 		cs.addFormatterForFieldAnnotation(new MaskFormatAnnotationFormatterFactory());
-
+		
+		//单元测试
 		this.mockMvc = standaloneSetup(new ConvertController())
 				.setConversionService(cs)
 				.alwaysExpect(status().isOk())
@@ -33,35 +34,36 @@ public class ConvertControllerTests {
 
 	@Test
 	public void primitive() throws Exception {
-		this.mockMvc.perform(get("/convert/primitive").param("value", "3"))
-				.andExpect(content().string("Converted primitive 3"));
+		this.mockMvc.perform(get("/convert/primitive").param("value", "3")) //请求
+				.andExpect(content().string("Converted primitive 3")); //期望
 	}
 
 	@Test
 	public void date() throws Exception {
 		String timezone = getTimezone(2010, 7, 4);
-		this.mockMvc.perform(get("/convert/date/2010-07-04"))
-				.andExpect(content().string("Converted date Sun Jul 04 00:00:00 " + timezone + " 2010"));
+		System.out.println("The attritube of 'timezone' value is[["+timezone+"]]");
+		this.mockMvc.perform(get("/convert/date/2010-07-04"))//请求
+				.andExpect(content().string("Converted date Sun Jul 04 00:00:00 " + timezone + " 2010"));//期望
 	}
 
 	@Test
 	public void collection() throws Exception {
-		this.mockMvc.perform(get("/convert/collection?values=1&values=2&values=3&values=4&values=5"))
-				.andExpect(content().string("Converted collection [1, 2, 3, 4, 5]"));
+		this.mockMvc.perform(get("/convert/collection?values=1&values=2&values=3&values=4&values=5"))//请求
+				.andExpect(content().string("Converted collection [1, 2, 3, 4, 5]"));//期望
 	}
 
 	@Test
 	public void collection2() throws Exception {
-		this.mockMvc.perform(get("/convert/collection?values=1,2,3,4,5"))
-				.andExpect(content().string("Converted collection [1, 2, 3, 4, 5]"));
+		this.mockMvc.perform(get("/convert/collection?values=1,2,3,4,5"))//请求
+				.andExpect(content().string("Converted collection [1, 2, 3, 4, 5]"));//期望
 	}
 
 	@Test
 	public void formattedCollection() throws Exception {
-		String timezone2010 = getTimezone(2010, 7, 4);
-		String timezone2011 = getTimezone(2011, 7, 4);
-		this.mockMvc.perform(get("/convert/formattedCollection?values=2010-07-04,2011-07-04"))
-				.andExpect(content().string(
+		String timezone2010 = getTimezone(2010, 7, 4);System.out.println("timezone2010[["+timezone2010+"]]");
+		String timezone2011 = getTimezone(2011, 7, 4);System.out.println("timezone2011[["+timezone2011+"]]");
+		this.mockMvc.perform(get("/convert/formattedCollection?values=2010-07-04,2011-07-04"))//请求
+				.andExpect(content().string( //期望
 						"Converted formatted collection [Sun Jul 04 00:00:00 "
 								+ timezone2010 + " 2010, Mon Jul 04 00:00:00 " + timezone2011 + " 2011]"));
 	}
@@ -126,13 +128,14 @@ public class ConvertControllerTests {
 				.andExpect(content().string(
 						"Converted JavaBean nested=NestedBean foo=bar list=[NestedBean foo=baz] map={key=NestedBean list=[NestedBean foo=bip]}"));
 	}
-
+	
+	// 基于Calendar,Date,TimeZone的时区缩写获取器 
 	private String getTimezone(int year, int month, int day)
 	{
-		Calendar calendar = Calendar.getInstance();
-		calendar.set(Calendar.YEAR, year);
-		calendar.set(Calendar.MONTH, month);
-		calendar.set(Calendar.DAY_OF_MONTH, day);
+		Calendar calendar = Calendar.getInstance(); 
+		calendar.set(Calendar.YEAR, year); // year is Calendar YEAR
+		calendar.set(Calendar.MONTH, month);// month is Calender MONTH
+		calendar.set(Calendar.DAY_OF_MONTH, day);// day is Calender DAY_OF_MONTH
 		Date date = calendar.getTime();
 		TimeZone timezone = TimeZone.getDefault();
 		boolean inDaylight = timezone.inDaylightTime(date);

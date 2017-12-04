@@ -28,7 +28,7 @@
 		<li><a href="#views">View Rendering</a></li>
 		<li><a href="#convert">Type Conversion</a></li>
 		<li><a href="#validation">Validation</a></li>
-		<li><a href="<c:url value="/form" />" title="forms">Forms</a></li>
+		<li><a href="<c:url value="/form" />" title="forms">Forms(*)</a></li>
 		<li><a href="<c:url value="/fileupload" />" title="fileupload">File Upload</a></li>
 		<li><a href="#exceptions">Exception Handling</a></li>
 		<li><a href="#redirect">Redirecting</a></li>
@@ -123,12 +123,12 @@
 			</li>
 			<li>
 				<form id="requestBody" class="textForm" action="<c:url value="/data/body" />" method="post">
-					<input id="requestBodySubmit" type="submit" value="Request Body" />
+					<input id="requestBodySubmit" type="submit" value="Request Body(ajax)" />
 				</form>
 			</li>				
 			<li>
 				<form id="requestBodyAndHeaders" class="textForm" action="<c:url value="/data/entity" />" method="post">
-					<input id="requestBodyAndHeadersSubmit" type="submit" value="Request Body and Headers" />
+					<input id="requestBodyAndHeadersSubmit" type="submit" value="Request Body and Headers(ajax)" />
 				</form>
 			</li>
 		</ul>	
@@ -204,7 +204,7 @@
 			<ul>
 				<li>
 					<form id="readString" class="textForm" action="<c:url value="/messageconverters/string" />" method="post">
-						<input id="readStringSubmit" type="submit" value="Read a String" />
+						<input id="readStringSubmit" type="submit" value="Read a String(ajax)" />
 					</form>
 				</li>
 				<li>

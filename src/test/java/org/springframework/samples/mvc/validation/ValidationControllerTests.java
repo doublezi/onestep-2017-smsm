@@ -8,13 +8,32 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
-
+/**
+ * 
+ * </br>
+ * *********************
+ * </br>
+ * 作者：隔壁老王(ಥ _ ಥ) 21岁
+ * </br>          
+ * *********************
+ * </br>
+ * 日期：2017年12月1日
+ * </br>                
+ * *********************
+ * </br>
+ * 时间：下午1:18:52        
+ * </br>        
+ * *********************
+ * </br>
+ * 测试，就是让你做一个能预见未来的人
+ */
 public class ValidationControllerTests {
 
 	private MockMvc mockMvc;
 
 	@Before
 	public void setup() throws Exception {
+		//单元测试 /. standaloneSetuo(一般都是面向单元测试
 		this.mockMvc = standaloneSetup(new ValidationController()).alwaysExpect(status().isOk()).build();
 	}
 
